@@ -1,0 +1,36 @@
+A set of scripts to go from AVL to 3D CAD
+
+only works with meters. if you don't like it, scale it after...
+
+currently requires Octave or MatLab, and SolidWorks
+
+right now it works for solidworks, i'm certain it could be extended to other CAD packages
+
+the AVL parsing is very brittle
+
+sample 'supergee.avl' included. I modded it a bit from drela's original so that it would work with my (crappy) parser.
+
+the list of things that aren't implemented is vast, but here's a couple of the worst ones:
+
+surface scaling
+surface angles (only section angles supported now)
+better dihedral (all sections of a surface are rotated to line up with the "average" angle of the surface)
+default airfoil, perhaps. right now if no AFILE, no bueno
+
+
+enough jabbering, how to use it:
+
+run "avl_to_SW('supergee.avl','filename');" in octave or matlab (only tested in octave)
+this will generate a series of "filename1.txt, filename2.txt..." files, one for each section and body in the avl file.
+
+in solidworks, to go tool->macro->run
+
+and select curvegen3.swp
+
+this will spawn a dialogue box, select the first of the generated files ("filename1.txt" in this case)
+
+each section will be brought into two 3d sketches, one of a spline through the points of the airfoil, and one of just the points.
+
+have a blast!
+
+rotor/blade scripts coming soon
